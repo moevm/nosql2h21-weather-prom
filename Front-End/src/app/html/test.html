@@ -1,0 +1,37 @@
+<script type="text/html" id="forecast-content">
+    <ul data-bind="foreach: cities">
+        <li>
+            <img data-bind="attr: { src: $data.picture, id: 'image' + $data.id }" /><br/>
+            <i data-bind="text: $data.name"></i><br/>
+            <div class="button-info" data-bind="dxButton: {
+                text: 'Details',
+                onClick: function(e) { $parent.showInfo(e) }
+            }"></div>
+        </li>
+    </ul>
+    <!-- ko template: { name: 'city-popup', data: $data.city }-->
+    <!-- /ko -->
+</script>
+
+<script type="text/html" id="city-popup">
+    <div data-bind="dxPopup: $parent.popupOptions">
+        <div data-options="dxTemplate: { name:'info' }">
+            <p>
+                Name:
+                <span data-bind="text: $data.name"></span>
+            </p>
+            <p>
+                Temperature:
+                <span data-bind="text: $data.temperature + ' °С'"></span>
+            </p>
+            <p>
+                Air Pressure:
+                <span data-bind="text: $data.airPressure + ', mmHg'"></span>
+            </p>
+            <p>
+                Humidity:
+                <span data-bind="text: $data.humidity + '%'"></span>
+            </p>
+        </div>
+    </div>
+</script>
