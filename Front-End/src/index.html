@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link href="/node_modules/jquery-ui/themes/base/all.css" rel="stylesheet" />
+      <link href="/node_modules/devextreme/dist/css/dx.common.css" rel="stylesheet" />
+      <link href="/node_modules/devextreme/dist/css/dx.light.css" rel="stylesheet" />
+        <script type="text/javascript" src="/node_modules/knockout/build/output/knockout-latest.js"></script>
+        <script type="text/javascript" src="/node_modules/devextreme/dist/js/dx.all.js"></script>
+    </head>
+    <body>
+        <div class="dx-viewport demo-container">
+        <div id="page-wrapper">
+            <h1>Weather Forecast</h1>
+            <div data-bind="dxWeatherForecast: { cityCount: $data.cityCount } "></div>
+        </div>
+    </div>
+        <!-- Include the bundle script -->
+
+    </body>
+</html>

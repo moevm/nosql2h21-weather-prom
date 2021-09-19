@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "noImplicitAny": false,
+    "noStrictGenericChecks": true,
+    "noEmitOnError": true,
+    "moduleResolution": "node",
+    "typeRoots": [
+      "node_modules/@types",
+      "src/typings.d.ts"
+    ],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "exclude": [
+    "node_modules",
+  ]
+}
