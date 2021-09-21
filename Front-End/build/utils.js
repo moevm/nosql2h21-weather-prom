@@ -19,6 +19,17 @@ function readFiles(dirname, extention, onFileContent, onError, toDir, firstLevel
 }
 
 module.exports = {
+    createApiKeyTask: function(sourcePath) {
+        return new Promise(function(resolve, reject) {
+            fs.readFile(path.join(sourcePath, './.apikey'), (err, key) => {
+                if (err) {
+                    reject('File \'.apiKey\' not found in root folder, please create file with your Google-Api Key');
+                };
+                fs.writeFileSync(path.join(sourcePath, './src/app/sources/utils/apiKey.ts'), 'export var apiKey = \'' + key + '\';');
+                resolve();
+            });
+        });
+    },
     readFiles: readFiles,
     generateTemplates: function(path, isExternal, joinedTemplates) {
         var content = 'import { TemplatesEngine } from \'./utils/_templateEngine\';\n\n';

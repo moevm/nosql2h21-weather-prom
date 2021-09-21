@@ -11,10 +11,10 @@
         <div class="dx-viewport demo-container">
         <div id="page-wrapper">
             <h1>Weather Forecast</h1>
-            <div data-bind="dxWeatherForecast: { cityCount: $data.cityCount } "></div>
+            <div id="google-map"></div>
+            <!-- ko template: { name: 'forecast-content', data: $data.forecast, if: $data.forecast } -->
+            <!-- /ko -->
         </div>
     </div>
-        <!-- Include the bundle script -->
-
     </body>
 </html>

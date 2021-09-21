@@ -1,2 +1,2 @@
 import './templates';
-import './bindings';
+import './context';

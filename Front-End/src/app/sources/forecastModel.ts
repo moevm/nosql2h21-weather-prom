@@ -1,13 +1,5 @@
 import * as ko from 'knockout';
-
-export interface CityModel {
-    id: number;
-    name: string;
-    temperature: number;
-    airPressure: number;
-    humidity: number;
-    picture: string;
-}
+import { CityModel, citiesInfo } from './utils/_initData';
 
 export class ForeCastModel {
     cities = ko.observableArray();
@@ -15,8 +7,8 @@ export class ForeCastModel {
     positionOf = ko.observable('');
     visiblePopup = ko.observable(false);
 
-    constructor(cityCount: number) {
-        this.cities(citiesInfo.slice(0, cityCount));
+    constructor(private _googleMap: google.maps.Map) {
+        this.cities(citiesInfo);
     }
 
     popupOptions = {
@@ -31,7 +23,7 @@ export class ForeCastModel {
         closeOnOutsideClick: true,
         showCloseButton: false,
         position: {
-            at: 'bottom',
+            at: 'top',
             my: 'center',
             of: this.positionOf,
         },
@@ -43,8 +35,23 @@ export class ForeCastModel {
                 text: 'Close',
                 onClick: () => this.visiblePopup(false)
             }
+        }, {
+            widget: 'dxButton',
+            toolbar: 'bottom',
+            location: 'before',
+            options: {
+                text: 'Show on Map',
+                onClick: () => {
+                    this.showOnMap();
+                    this.visiblePopup(false);
+                }
+            }
         }]
     };
+
+    showOnMap() {
+        this._googleMap.setCenter(this.city().coords);
+    }
 
     showInfo(data) {
         this.city(data.model);
@@ -53,25 +60,3 @@ export class ForeCastModel {
     }
 }
 
-var citiesInfo = [{
-    'id': 1,
-    'name': 'Sait-Petersburg',
-    'temperature': '10',
-    'airPressure': '764',
-    'humidity': '80',
-    'picture': 'https://pp.userapi.com/c623419/v623419420/326a5/vBn6qfGGrro.jpg',
-}, {
-    'id': 2,
-    'name': 'New York',
-    'temperature': '15',
-    'airPressure': '700',
-    'humidity': '69',
-    'picture': 'https://www.tripsavvy.com/thmb/tprq2yCdB7EURb66Y_qOI-7_x7A=/2121x1414/filters:fill(auto,1)/nyc-chinatown-view-5c2e485e4cedfd00019e15fc.jpg',
-}, {
-    'id': 3,
-    'name': 'Moscow',
-    'temperature': '12',
-    'airPressure': '755',
-    'humidity': '62',
-    'picture': 'http://images.chistoprudov.ru/lj/roofs/moscow_comp1/26.jpg',
-}];
