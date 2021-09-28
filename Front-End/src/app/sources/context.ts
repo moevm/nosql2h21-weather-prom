@@ -1,27 +1,36 @@
 import * as ko from 'knockout';
 import { Loader as MapLoader } from '@googlemaps/js-api-loader';
-import { ForeCastModel } from './forecastModel';
-import { apiKey } from './utils/apiKey';
+import { IPageComponent } from './components/pageComponent';
+import { MapPageModel } from './components/map/mapModel';
+import { PageToolbar } from './components/toolbar';
+import { citiesInfo } from './utils/_initData';
 
 export class BindingContext {
+    constructor() {
+        this.toolbar = new PageToolbar(this);
+        this.mapPage = new MapPageModel();
+        this.tablePage = {
+            templateName: 'table-page',
+            data: citiesInfo
+        };
+        if(!this.currentPage()) {
+            this.currentPage(this.tablePage);
+        }
+    }
+    tablePage: any;
     mapLoader: MapLoader;
     googleMap: google.maps.Map;
-    forecast: ko.Observable<ForeCastModel> = ko.observable();
-    constructor() {
-        this.mapLoader = new MapLoader({
-            apiKey: apiKey,
-            version: 'weekly',
-        });
-        this.mapLoader.load().then(() => {
-            this.googleMap = new google.maps.Map(document.getElementById('google-map') as HTMLElement, {
-                center: { lat: 59.57, lng: 30.19 },
-                zoom: 8,
-            });
-            this.forecast(new ForeCastModel(this.googleMap));
-        });
+    currentPage: ko.Observable<IPageComponent> = ko.observable();
+    mapPage: MapPageModel;
+    toolbar: any;
+    swithToMap() {
+        this.currentPage(this.mapPage);
+    }
+    swithToTable() {
+        this.currentPage(this.tablePage);
     }
 }
 
 window.onload = () => {
-    ko.applyBindings(new BindingContext(), document.getElementById('page-wrapper'));
+    ko.applyBindings(new BindingContext(), document.getElementsByClassName('page-wrapper')[0]);
 };

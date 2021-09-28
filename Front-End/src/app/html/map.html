@@ -1,4 +1,5 @@
-<script type="text/html" id="forecast-content">
+<script type="text/html" id="map-page-content">
+    <div class="google-map" data-bind="GoogleMap: $data"></div>
     <ul data-bind="foreach: cities">
         <li>
             <img data-bind="attr: { src: $data.picture, id: 'image' + $data.id }" /><br/>

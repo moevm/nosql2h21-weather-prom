@@ -4,13 +4,24 @@ body {
     .dx-viewport {
         background-color: inherit;
     
-        #page-wrapper {
+        .page-wrapper {
             padding: 10px;
+
+            .toolbar {
+                margin-bottom: 20px;
+
+                .dx-toolbar {
+                    padding: 12px;
+                    padding-top: 2px;
+                    background: lightgray;
+                    border-radius: 5px;
+                }
+            }
     
-            #google-map {
+            .google-map {
                 left: 20%;
                 width: 60%;
-                height: 600px;
+                height: 500px;
                 margin-bottom: 50px;
             
                 .gm-svpc {
@@ -51,5 +62,3 @@ body {
         }
     }
 }
-
-
