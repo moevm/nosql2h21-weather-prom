@@ -1,2 +1,2 @@
 ### Hello world
-To execute Prometheus execute hello_world.sh
+To start Prometheus execute hello_world.sh
