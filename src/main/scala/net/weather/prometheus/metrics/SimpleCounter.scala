@@ -7,7 +7,7 @@ object SimpleCounter {
   val myCounter: Counter =
     Counter
       .build()
-      .name("CounterName")
+      .name("simp")
       .labelNames("status")
       .help("Counter desc")
       .register()
