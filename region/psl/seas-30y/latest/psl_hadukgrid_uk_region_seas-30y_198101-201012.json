@@ -1,100 +1,126 @@
-netcdf psl_hadukgrid_uk_region_seas-30y_198101-201012 {
-dimensions:
-	time = 4 ;
-	region = 16 ;
-	bnds = 2 ;
-	string26 = 26 ;
-	string64 = 64 ;
-,variables:
-	double psl(time, region) ;
-		psl:standard_name = "air_pressure_at_sea_level" ;
-		psl:long_name = "Pressure at mean sea level" ;
-		psl:units = "hPa" ;
-		psl:description = "Sea level pressure" ;
-		psl:label_units = "hPa" ;
-		psl:plot_label = "Sea level pressure (hPa)" ;
-		psl:cell_methods = "time: mean within days time: mean over days time: mean over years time: mean" ;
-		psl:coordinates = "clim_season geo_region" ;
-	double time(time) ;
-		time:axis = "T" ;
-		time:bounds = "time_bnds" ;
-		time:units = "hours since 1800-01-01 00:00:00" ;
-		time:standard_name = "time" ;
-		time:calendar = "gregorian" ;
-	double time_bnds(time, bnds) ;
-	int region(region) ;
-		region:units = "1" ;
-		region:standard_name = "region" ;
-	char geo_region(region, string26) ;
-		geo_region:units = "1" ;
-		geo_region:long_name = "Administrative Region" ;
-	char clim_season(time, string64) ;
-		clim_season:units = "1" ;
-		clim_season:long_name = "clim_season" ;
-
-// global attributes:
-		:comment = "seasonal resolution gridded climate observations" ;
-,		:creation_date = "2021-07-19T10:59:48" ;
-,		:frequency = "seas-30y" ;
-,		:institution = "Met Office" ;
-,		:lta_period = "1981-2010" ;
-,		:references = "doi: 10.1002/joc.1161" ;
-,		:short_name = "seasonal_mslp_climatology" ;
-,		:source = "HadUK-Grid_v1.0.3.0" ;
-,		:title = "Gridded surface climate observations data for the UK" ;
-,		:version = "v20210712" ;
-,		:Conventions = "CF-1.7" ;
-data:
-
- psl =
-  1014.81960083184, 1015.49604780143, 1010.643716981, 1016.1404640335, 
-    1012.41110430101, 1008.82170301285, 1013.49609596085, 1016.27433238646, 
-    1016.21805583274, 1015.17784108178, 1011.38511585225, 1013.67800248688, 
-    _, 1012.74852866619, 1011.95381173578, 1015.05769003424,
-  1014.61239039947, 1014.8542052953, 1012.71999511524, 1015.11212795755, 
-    1013.55866476685, 1011.82657906931, 1013.96774456363, 1015.19630944292, 
-    1015.29660258756, 1014.74094833473, 1013.00824052589, 1014.15076598115, 
-    _, 1013.71294562013, 1013.25828737675, 1014.7778790101,
-  1015.5472287795, 1015.80141951389, 1013.69789592258, 1016.15446409259, 
-    1014.49847499757, 1013.11118354109, 1014.98529107049, 1016.29362912962, 
-    1016.61059647046, 1015.798903701, 1014.15446564384, 1015.0680821812, _, 
-    1014.93917326677, 1014.5226705955, 1016.03887001515,
-  1013.60324942362, 1014.14699208587, 1010.37028873934, 1014.60338393441, 
-    1011.69912005029, 1009.00645384344, 1012.48230040178, 1014.70150172736, 
-    1014.60628031534, 1013.83008881019, 1010.86279969686, 1012.7244377645, _, 
-    1011.89643678187, 1011.26258839631, 1013.69182934608 ;
-,
- time = 1586976, 1589136, 1591320, 1593528 ;
-,
- time_bnds =
-  1586616, 1842216,
-  1588032, 1844424,
-  1590240, 1846632,
-  1592448, 1848816 ;
-,
- region = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ;
-,
- geo_region =
-  "East Midlands             ",
-  "East of England           ",
-  "East Scotland             ",
-  "London                    ",
-  "North East England        ",
-  "North Scotland            ",
-  "North West England        ",
-  "South East England        ",
-  "South West England        ",
-  "West Midlands             ",
-  "West Scotland             ",
-  "Yorkshire and Humber      ",
-  "Channel Islands           ",
-  "Isle of Man               ",
-  "Northern Ireland          ",
-  "Wales                     " ;
-,
- clim_season =
-  "djf                                                             ",
-  "mam                                                             ",
-  "jja                                                             ",
-  "son                                                             " ;
+{
+    "clim_season": [
+        "djf                                                             ",
+        "mam                                                             ",
+        "jja                                                             ",
+        "son                                                             "
+    ],
+    "geo_region": [
+        "East Midlands             ",
+        "East of England           ",
+        "East Scotland             ",
+        "London                    ",
+        "North East England        ",
+        "North Scotland            ",
+        "North West England        ",
+        "South East England        ",
+        "South West England        ",
+        "West Midlands             ",
+        "West Scotland             ",
+        "Yorkshire and Humber      ",
+        "Channel Islands           ",
+        "Isle of Man               ",
+        "Northern Ireland          ",
+        "Wales                     "
+    ],
+    "psl": [
+        1014.81960083184,
+        1015.49604780143,
+        1010.643716981,
+        1016.1404640335,
+        1012.41110430101,
+        1008.82170301285,
+        1013.49609596085,
+        1016.27433238646,
+        1016.21805583274,
+        1015.17784108178,
+        1011.38511585225,
+        1013.67800248688,
+        null,
+        1012.74852866619,
+        1011.95381173578,
+        1015.05769003424,
+        1014.61239039947,
+        1014.8542052953,
+        1012.71999511524,
+        1015.11212795755,
+        1013.55866476685,
+        1011.82657906931,
+        1013.96774456363,
+        1015.19630944292,
+        1015.29660258756,
+        1014.74094833473,
+        1013.00824052589,
+        1014.15076598115,
+        null,
+        1013.71294562013,
+        1013.25828737675,
+        1014.7778790101,
+        1015.5472287795,
+        1015.80141951389,
+        1013.69789592258,
+        1016.15446409259,
+        1014.49847499757,
+        1013.11118354109,
+        1014.98529107049,
+        1016.29362912962,
+        1016.61059647046,
+        1015.798903701,
+        1014.15446564384,
+        1015.0680821812,
+        null,
+        1014.93917326677,
+        1014.5226705955,
+        1016.03887001515,
+        1013.60324942362,
+        1014.14699208587,
+        1010.37028873934,
+        1014.60338393441,
+        1011.69912005029,
+        1009.00645384344,
+        1012.48230040178,
+        1014.70150172736,
+        1014.60628031534,
+        1013.83008881019,
+        1010.86279969686,
+        1012.7244377645,
+        null,
+        1011.89643678187,
+        1011.26258839631,
+        1013.69182934608
+    ],
+    "region": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+    ],
+    "time": [
+        1586976,
+        1589136,
+        1591320,
+        1593528
+    ],
+    "time_bnds": [
+        1586616,
+        1842216,
+        1588032,
+        1844424,
+        1590240,
+        1846632,
+        1592448,
+        1848816
+    ]
 }

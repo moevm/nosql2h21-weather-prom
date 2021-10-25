@@ -1,85 +1,69 @@
-netcdf groundfrost_hadukgrid_uk_region_ann-20y_198101-200012 {
-dimensions:
-	time = 1 ;
-	region = 16 ;
-	bnds = 2 ;
-	string26 = 26 ;
-	string15 = 15 ;
-,variables:
-	double groundfrost(time, region) ;
-		groundfrost:long_name = "Number of days with ground frost (minimum grass temperature below zero)" ;
-		groundfrost:units = "1.0" ;
-		groundfrost:description = "Days with ground frost" ;
-		groundfrost:label_units = "days" ;
-		groundfrost:plot_label = "Ground frost (days)" ;
-		groundfrost:cell_methods = "time: minimum within days time: sum over days time: mean over years time: sum" ;
-		groundfrost:coordinates = "area_type geo_region surface_temperature" ;
-	double time(time) ;
-		time:axis = "T" ;
-		time:bounds = "time_bnds" ;
-		time:units = "hours since 1800-01-01 00:00:00" ;
-		time:standard_name = "time" ;
-		time:calendar = "gregorian" ;
-	double time_bnds(time, bnds) ;
-	int region(region) ;
-		region:units = "1" ;
-		region:standard_name = "region" ;
-	char geo_region(region, string26) ;
-		geo_region:units = "1" ;
-		geo_region:long_name = "Administrative Region" ;
-	char area_type(string15) ;
-		area_type:units = "1" ;
-		area_type:standard_name = "area_type" ;
-	double surface_temperature ;
-		surface_temperature:units = "degC" ;
-		surface_temperature:standard_name = "surface_temperature" ;
-
-// global attributes:
-		:comment = "annual resolution gridded climate observations" ;
-,		:creation_date = "2021-07-19T10:59:55" ;
-,		:frequency = "ann-20y" ;
-,		:institution = "Met Office" ;
-,		:lta_period = "1981-2000" ;
-,		:references = "doi: 10.1002/joc.1161" ;
-,		:short_name = "annual_groundfrost_climatology" ;
-,		:source = "HadUK-Grid_v1.0.3.0" ;
-,		:title = "Gridded surface climate observations data for the UK" ;
-,		:version = "v20210712" ;
-,		:Conventions = "CF-1.7" ;
-data:
-
- groundfrost =
-  109.106752764458, 100.634099955224, 140.470294892301, 93.8073507333323, 
-    124.692695754738, 127.898697983837, 108.159838369849, 104.694683382597, 
-    91.7671274452511, 111.866491020871, 114.308909729919, 107.861698112916, 
-    _, 59.2489595398665, 100.499505149962, 102.486463055782 ;
-,
- time = 1590960 ;
-,
- time_bnds =
-  1586616, 1761912 ;
-,
- region = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ;
-,
- geo_region =
-  "East Midlands             ",
-  "East of England           ",
-  "East Scotland             ",
-  "London                    ",
-  "North East England        ",
-  "North Scotland            ",
-  "North West England        ",
-  "South East England        ",
-  "South West England        ",
-  "West Midlands             ",
-  "West Scotland             ",
-  "Yorkshire and Humber      ",
-  "Channel Islands           ",
-  "Isle of Man               ",
-  "Northern Ireland          ",
-  "Wales                     " ;
-,
- area_type = "natural_grasses" ;
-,
- surface_temperature = 0 ;
+{
+    "area_type": [
+        "natural_grasses"
+    ],
+    "geo_region": [
+        "East Midlands             ",
+        "East of England           ",
+        "East Scotland             ",
+        "London                    ",
+        "North East England        ",
+        "North Scotland            ",
+        "North West England        ",
+        "South East England        ",
+        "South West England        ",
+        "West Midlands             ",
+        "West Scotland             ",
+        "Yorkshire and Humber      ",
+        "Channel Islands           ",
+        "Isle of Man               ",
+        "Northern Ireland          ",
+        "Wales                     "
+    ],
+    "groundfrost": [
+        109.106752764458,
+        100.634099955224,
+        140.470294892301,
+        93.8073507333323,
+        124.692695754738,
+        127.898697983837,
+        108.159838369849,
+        104.694683382597,
+        91.7671274452511,
+        111.866491020871,
+        114.308909729919,
+        107.861698112916,
+        null,
+        59.2489595398665,
+        100.499505149962,
+        102.486463055782
+    ],
+    "region": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+    ],
+    "surface_temperature": [
+        0
+    ],
+    "time": [
+        1590960
+    ],
+    "time_bnds": [
+        1586616,
+        1761912
+    ]
 }

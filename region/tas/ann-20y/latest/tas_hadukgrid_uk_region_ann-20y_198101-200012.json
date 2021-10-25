@@ -1,76 +1,63 @@
-netcdf tas_hadukgrid_uk_region_ann-20y_198101-200012 {
-dimensions:
-	time = 1 ;
-	region = 16 ;
-	bnds = 2 ;
-	string26 = 26 ;
-,variables:
-	double tas(time, region) ;
-		tas:standard_name = "air_temperature" ;
-		tas:long_name = "Mean air temperature" ;
-		tas:units = "degC" ;
-		tas:description = "Mean air temperature" ;
-		tas:label_units = "C" ;
-		tas:level = "1.5m" ;
-		tas:plot_label = "Mean air temperature at 1.5m (C)" ;
-		tas:cell_methods = "time: mean within days time: mean over days time: mean over years time: mean" ;
-		tas:coordinates = "geo_region" ;
-	double time(time) ;
-		time:axis = "T" ;
-		time:bounds = "time_bnds" ;
-		time:units = "hours since 1800-01-01 00:00:00" ;
-		time:standard_name = "time" ;
-		time:calendar = "gregorian" ;
-	double time_bnds(time, bnds) ;
-	int region(region) ;
-		region:units = "1" ;
-		region:standard_name = "region" ;
-	char geo_region(region, string26) ;
-		geo_region:units = "1" ;
-		geo_region:long_name = "Administrative Region" ;
-
-// global attributes:
-		:comment = "annual resolution gridded climate observations" ;
-,		:creation_date = "2021-07-19T10:59:29" ;
-,		:frequency = "ann-20y" ;
-,		:institution = "Met Office" ;
-,		:lta_period = "1981-2000" ;
-,		:references = "doi: 10.1002/joc.1161" ;
-,		:short_name = "annual_meantemp_climatology" ;
-,		:source = "HadUK-Grid_v1.0.3.0" ;
-,		:title = "Gridded surface climate observations data for the UK" ;
-,		:version = "v20210712" ;
-,		:Conventions = "CF-1.7" ;
-data:
-
- tas =
-  9.39373730929157, 9.97263255024538, 7.17138828058, 10.8735918246208, 
-    8.0046926943885, 6.98540850418303, 8.7374697794786, 10.0952471610175, 
-    9.97445390061153, 9.45819943343098, 7.92683102133731, 8.79363345397682, 
-    _, 9.08093028684964, 8.76254999403045, 9.01103391206263 ;
-,
- time = 1590960 ;
-,
- time_bnds =
-  1586616, 1761912 ;
-,
- region = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ;
-,
- geo_region =
-  "East Midlands             ",
-  "East of England           ",
-  "East Scotland             ",
-  "London                    ",
-  "North East England        ",
-  "North Scotland            ",
-  "North West England        ",
-  "South East England        ",
-  "South West England        ",
-  "West Midlands             ",
-  "West Scotland             ",
-  "Yorkshire and Humber      ",
-  "Channel Islands           ",
-  "Isle of Man               ",
-  "Northern Ireland          ",
-  "Wales                     " ;
+{
+    "geo_region": [
+        "East Midlands             ",
+        "East of England           ",
+        "East Scotland             ",
+        "London                    ",
+        "North East England        ",
+        "North Scotland            ",
+        "North West England        ",
+        "South East England        ",
+        "South West England        ",
+        "West Midlands             ",
+        "West Scotland             ",
+        "Yorkshire and Humber      ",
+        "Channel Islands           ",
+        "Isle of Man               ",
+        "Northern Ireland          ",
+        "Wales                     "
+    ],
+    "region": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+    ],
+    "tas": [
+        9.39373730929157,
+        9.97263255024538,
+        7.17138828058,
+        10.8735918246208,
+        8.0046926943885,
+        6.98540850418303,
+        8.7374697794786,
+        10.0952471610175,
+        9.97445390061153,
+        9.45819943343098,
+        7.92683102133731,
+        8.79363345397682,
+        null,
+        9.08093028684964,
+        8.76254999403045,
+        9.01103391206263
+    ],
+    "time": [
+        1590960
+    ],
+    "time_bnds": [
+        1586616,
+        1761912
+    ]
 }

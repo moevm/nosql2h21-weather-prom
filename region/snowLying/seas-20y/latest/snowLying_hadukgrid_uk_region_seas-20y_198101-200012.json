@@ -1,107 +1,129 @@
-netcdf snowLying_hadukgrid_uk_region_seas-20y_198101-200012 {
-dimensions:
-	time = 4 ;
-	region = 16 ;
-	bnds = 2 ;
-	string26 = 26 ;
-	string64 = 64 ;
-,variables:
-	double snowLying(time, region) ;
-		snowLying:standard_name = "surface_snow_binary_mask" ;
-		snowLying:long_name = "Number of days with snow lying at 0900" ;
-		snowLying:units = "1.0" ;
-		snowLying:description = "Snow lying" ;
-		snowLying:label_units = "days" ;
-		snowLying:plot_label = "Snow lying (days)" ;
-		snowLying:cell_methods = "time: sum (interval: 1 day) time: mean over years time: sum" ;
-		snowLying:coordinates = "clim_season geo_region surface_snow_area_fraction" ;
-	double time(time) ;
-		time:axis = "T" ;
-		time:bounds = "time_bnds" ;
-		time:units = "hours since 1800-01-01 00:00:00" ;
-		time:standard_name = "time" ;
-		time:calendar = "gregorian" ;
-	double time_bnds(time, bnds) ;
-	int region(region) ;
-		region:units = "1" ;
-		region:standard_name = "region" ;
-	char geo_region(region, string26) ;
-		geo_region:units = "1" ;
-		geo_region:long_name = "Administrative Region" ;
-	char clim_season(time, string64) ;
-		clim_season:units = "1" ;
-		clim_season:long_name = "clim_season" ;
-	double surface_snow_area_fraction ;
-		surface_snow_area_fraction:units = "1" ;
-		surface_snow_area_fraction:standard_name = "surface_snow_area_fraction" ;
-
-// global attributes:
-		:comment = "seasonal resolution gridded climate observations" ;
-,		:creation_date = "2021-07-19T10:59:34" ;
-,		:frequency = "seas-20y" ;
-,		:institution = "Met Office" ;
-,		:lta_period = "1981-2000" ;
-,		:references = "doi: 10.1002/joc.1161" ;
-,		:short_name = "seasonal_snowlying_climatology" ;
-,		:source = "HadUK-Grid_v1.0.3.0" ;
-,		:title = "Gridded surface climate observations data for the UK" ;
-,		:version = "v20210712" ;
-,		:Conventions = "CF-1.7" ;
-data:
-
- snowLying =
-  9.14950566674926, 7.11929787264926, 22.4239027535525, 5.60328697699582, 
-    16.6139564264741, 21.0996671169337, 10.845274988757, 6.07806378309615, 
-    4.54080633257938, 8.75706775582366, 12.6220797864778, 12.3531533144157, 
-    _, 5.34537283378061, 7.42298784629049, 9.42284215204804,
-  1.08867337900955, 0.524177541686338, 5.61913653443092, 0.427007248471679, 
-    3.96321976794644, 6.73973937936041, 2.61862143713632, 0.713981779912348, 
-    0.838815590343793, 1.18824046620482, 3.2344029011855, 2.35768860634413, 
-    _, 1.86384194983192, 1.6147722017982, 2.14767350517476,
-  0, 2.92679827860192e-05, 0.00271389168506667, 7.05993295052973e-05, 
-    0.000324948766653972, 0.00133929829437648, 0.0224293922484875, 
-    0.00089665975294745, 0.00130662576863698, 8.78919218290018e-05, 
-    0.000793820983483726, 0.00373539269103851, _, 0.012398831309602, 
-    0.00172119624132631, 0.00460936900258938,
-  0.517986001719365, 0.344138378512961, 2.10919059400647, 0.218235199993249, 
-    1.47153262882974, 2.21290585379269, 0.810872399658705, 0.206095533050927, 
-    0.210575253026433, 0.441980825294186, 0.942662341658915, 
-    0.975712192249811, _, 0.608058701397377, 0.455991836604903, 
-    0.640173411237714 ;
-,
- time = 1586976, 1589136, 1591320, 1593528 ;
-,
- time_bnds =
-  1586616, 1754568,
-  1588032, 1756776,
-  1590240, 1758984,
-  1592448, 1761168 ;
-,
- region = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ;
-,
- geo_region =
-  "East Midlands             ",
-  "East of England           ",
-  "East Scotland             ",
-  "London                    ",
-  "North East England        ",
-  "North Scotland            ",
-  "North West England        ",
-  "South East England        ",
-  "South West England        ",
-  "West Midlands             ",
-  "West Scotland             ",
-  "Yorkshire and Humber      ",
-  "Channel Islands           ",
-  "Isle of Man               ",
-  "Northern Ireland          ",
-  "Wales                     " ;
-,
- clim_season =
-  "djf                                                             ",
-  "mam                                                             ",
-  "jja                                                             ",
-  "son                                                             " ;
-,
- surface_snow_area_fraction = 0.5 ;
+{
+    "clim_season": [
+        "djf                                                             ",
+        "mam                                                             ",
+        "jja                                                             ",
+        "son                                                             "
+    ],
+    "geo_region": [
+        "East Midlands             ",
+        "East of England           ",
+        "East Scotland             ",
+        "London                    ",
+        "North East England        ",
+        "North Scotland            ",
+        "North West England        ",
+        "South East England        ",
+        "South West England        ",
+        "West Midlands             ",
+        "West Scotland             ",
+        "Yorkshire and Humber      ",
+        "Channel Islands           ",
+        "Isle of Man               ",
+        "Northern Ireland          ",
+        "Wales                     "
+    ],
+    "region": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+    ],
+    "snowLying": [
+        9.14950566674926,
+        7.11929787264926,
+        22.4239027535525,
+        5.60328697699582,
+        16.6139564264741,
+        21.0996671169337,
+        10.845274988757,
+        6.07806378309615,
+        4.54080633257938,
+        8.75706775582366,
+        12.6220797864778,
+        12.3531533144157,
+        null,
+        5.34537283378061,
+        7.42298784629049,
+        9.42284215204804,
+        1.08867337900955,
+        0.524177541686338,
+        5.61913653443092,
+        0.427007248471679,
+        3.96321976794644,
+        6.73973937936041,
+        2.61862143713632,
+        0.713981779912348,
+        0.838815590343793,
+        1.18824046620482,
+        3.2344029011855,
+        2.35768860634413,
+        null,
+        1.86384194983192,
+        1.6147722017982,
+        2.14767350517476,
+        0,
+        2.92679827860192e-05,
+        0.00271389168506667,
+        7.05993295052973e-05,
+        0.000324948766653972,
+        0.00133929829437648,
+        0.0224293922484875,
+        0.00089665975294745,
+        0.00130662576863698,
+        8.78919218290018e-05,
+        0.000793820983483726,
+        0.00373539269103851,
+        null,
+        0.012398831309602,
+        0.00172119624132631,
+        0.00460936900258938,
+        0.517986001719365,
+        0.344138378512961,
+        2.10919059400647,
+        0.218235199993249,
+        1.47153262882974,
+        2.21290585379269,
+        0.810872399658705,
+        0.206095533050927,
+        0.210575253026433,
+        0.441980825294186,
+        0.942662341658915,
+        0.975712192249811,
+        null,
+        0.608058701397377,
+        0.455991836604903,
+        0.640173411237714
+    ],
+    "surface_snow_area_fraction": [
+        0.5
+    ],
+    "time": [
+        1586976,
+        1589136,
+        1591320,
+        1593528
+    ],
+    "time_bnds": [
+        1586616,
+        1754568,
+        1588032,
+        1756776,
+        1590240,
+        1758984,
+        1592448,
+        1761168
+    ]
 }

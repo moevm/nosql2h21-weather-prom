@@ -1,110 +1,132 @@
-netcdf groundfrost_hadukgrid_uk_region_seas-20y_198101-200012 {
-dimensions:
-	time = 4 ;
-	region = 16 ;
-	bnds = 2 ;
-	string26 = 26 ;
-	string15 = 15 ;
-	string64 = 64 ;
-,variables:
-	double groundfrost(time, region) ;
-		groundfrost:long_name = "Number of days with ground frost (minimum grass temperature below zero)" ;
-		groundfrost:units = "1.0" ;
-		groundfrost:description = "Days with ground frost" ;
-		groundfrost:label_units = "days" ;
-		groundfrost:plot_label = "Ground frost (days)" ;
-		groundfrost:cell_methods = "time: minimum within days time: sum over days time: mean over years time: sum" ;
-		groundfrost:coordinates = "area_type clim_season geo_region surface_temperature" ;
-	double time(time) ;
-		time:axis = "T" ;
-		time:bounds = "time_bnds" ;
-		time:units = "hours since 1800-01-01 00:00:00" ;
-		time:standard_name = "time" ;
-		time:calendar = "gregorian" ;
-	double time_bnds(time, bnds) ;
-	int region(region) ;
-		region:units = "1" ;
-		region:standard_name = "region" ;
-	char geo_region(region, string26) ;
-		geo_region:units = "1" ;
-		geo_region:long_name = "Administrative Region" ;
-	char area_type(string15) ;
-		area_type:units = "1" ;
-		area_type:standard_name = "area_type" ;
-	char clim_season(time, string64) ;
-		clim_season:units = "1" ;
-		clim_season:long_name = "clim_season" ;
-	double surface_temperature ;
-		surface_temperature:units = "degC" ;
-		surface_temperature:standard_name = "surface_temperature" ;
-
-// global attributes:
-		:comment = "seasonal resolution gridded climate observations" ;
-,		:creation_date = "2021-07-19T10:59:54" ;
-,		:frequency = "seas-20y" ;
-,		:institution = "Met Office" ;
-,		:lta_period = "1981-2000" ;
-,		:references = "doi: 10.1002/joc.1161" ;
-,		:short_name = "seasonal_groundfrost_climatology" ;
-,		:source = "HadUK-Grid_v1.0.3.0" ;
-,		:title = "Gridded surface climate observations data for the UK" ;
-,		:version = "v20210712" ;
-,		:Conventions = "CF-1.7" ;
-data:
-
- groundfrost =
-  53.6247044766925, 49.6271643129482, 64.8330935510646, 48.0333099556925, 
-    58.9006284961698, 58.7870952179318, 51.2145606576688, 49.7224202027958, 
-    44.4262925967988, 52.8817462682497, 51.4546388668144, 53.8727926431056, 
-    _, 29.6576690233252, 48.8280431035503, 47.7471200158283,
-  32.7560081556931, 30.7603018938745, 41.7518324987566, 27.2066923814997, 
-    37.4163784277867, 38.936069776449, 32.8383398790535, 32.1396431108453, 
-    28.7573085712718, 34.40739570466, 34.8693977187157, 31.8852760235978, _, 
-    18.6880089887894, 30.0995922809684, 32.0296487050878,
-  1.86223769958444, 1.48350236174461, 4.32402910357973, 0.648533933870265, 
-    3.20718558721422, 4.89286348335518, 2.63004715181076, 1.71570559711097, 
-    1.32620183561713, 2.15717762059372, 4.07550671257415, 1.78485134289346, 
-    _, 1.35783683585299, 1.95768313273812, 2.95318091141756,
-  20.8638024324883, 18.7631313866569, 29.5613397389002, 17.9188144622698, 
-    25.1685032435678, 25.2826695061011, 21.4768906813159, 21.1169144718453, 
-    17.2573244415633, 22.420171427368, 23.909366431815, 20.3187781033196, _, 
-    9.54544469189892, 19.6141866327049, 19.7565134234486 ;
-,
- time = 1586976, 1589136, 1591320, 1593528 ;
-,
- time_bnds =
-  1586616, 1754568,
-  1588032, 1756776,
-  1590240, 1758984,
-  1592448, 1761168 ;
-,
- region = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ;
-,
- geo_region =
-  "East Midlands             ",
-  "East of England           ",
-  "East Scotland             ",
-  "London                    ",
-  "North East England        ",
-  "North Scotland            ",
-  "North West England        ",
-  "South East England        ",
-  "South West England        ",
-  "West Midlands             ",
-  "West Scotland             ",
-  "Yorkshire and Humber      ",
-  "Channel Islands           ",
-  "Isle of Man               ",
-  "Northern Ireland          ",
-  "Wales                     " ;
-,
- area_type = "natural_grasses" ;
-,
- clim_season =
-  "djf                                                             ",
-  "mam                                                             ",
-  "jja                                                             ",
-  "son                                                             " ;
-,
- surface_temperature = 0 ;
+{
+    "area_type": [
+        "natural_grasses"
+    ],
+    "clim_season": [
+        "djf                                                             ",
+        "mam                                                             ",
+        "jja                                                             ",
+        "son                                                             "
+    ],
+    "geo_region": [
+        "East Midlands             ",
+        "East of England           ",
+        "East Scotland             ",
+        "London                    ",
+        "North East England        ",
+        "North Scotland            ",
+        "North West England        ",
+        "South East England        ",
+        "South West England        ",
+        "West Midlands             ",
+        "West Scotland             ",
+        "Yorkshire and Humber      ",
+        "Channel Islands           ",
+        "Isle of Man               ",
+        "Northern Ireland          ",
+        "Wales                     "
+    ],
+    "groundfrost": [
+        53.6247044766925,
+        49.6271643129482,
+        64.8330935510646,
+        48.0333099556925,
+        58.9006284961698,
+        58.7870952179318,
+        51.2145606576688,
+        49.7224202027958,
+        44.4262925967988,
+        52.8817462682497,
+        51.4546388668144,
+        53.8727926431056,
+        null,
+        29.6576690233252,
+        48.8280431035503,
+        47.7471200158283,
+        32.7560081556931,
+        30.7603018938745,
+        41.7518324987566,
+        27.2066923814997,
+        37.4163784277867,
+        38.936069776449,
+        32.8383398790535,
+        32.1396431108453,
+        28.7573085712718,
+        34.40739570466,
+        34.8693977187157,
+        31.8852760235978,
+        null,
+        18.6880089887894,
+        30.0995922809684,
+        32.0296487050878,
+        1.86223769958444,
+        1.48350236174461,
+        4.32402910357973,
+        0.648533933870265,
+        3.20718558721422,
+        4.89286348335518,
+        2.63004715181076,
+        1.71570559711097,
+        1.32620183561713,
+        2.15717762059372,
+        4.07550671257415,
+        1.78485134289346,
+        null,
+        1.35783683585299,
+        1.95768313273812,
+        2.95318091141756,
+        20.8638024324883,
+        18.7631313866569,
+        29.5613397389002,
+        17.9188144622698,
+        25.1685032435678,
+        25.2826695061011,
+        21.4768906813159,
+        21.1169144718453,
+        17.2573244415633,
+        22.420171427368,
+        23.909366431815,
+        20.3187781033196,
+        null,
+        9.54544469189892,
+        19.6141866327049,
+        19.7565134234486
+    ],
+    "region": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+    ],
+    "surface_temperature": [
+        0
+    ],
+    "time": [
+        1586976,
+        1589136,
+        1591320,
+        1593528
+    ],
+    "time_bnds": [
+        1586616,
+        1754568,
+        1588032,
+        1756776,
+        1590240,
+        1758984,
+        1592448,
+        1761168
+    ]
 }
