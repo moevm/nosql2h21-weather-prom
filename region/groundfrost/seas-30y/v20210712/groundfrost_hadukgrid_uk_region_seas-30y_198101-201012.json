@@ -1,0 +1,110 @@
+netcdf groundfrost_hadukgrid_uk_region_seas-30y_198101-201012 {
+dimensions:
+	time = 4 ;
+	region = 16 ;
+	bnds = 2 ;
+	string26 = 26 ;
+	string15 = 15 ;
+	string64 = 64 ;
+,variables:
+	double groundfrost(time, region) ;
+		groundfrost:long_name = "Number of days with ground frost (minimum grass temperature below zero)" ;
+		groundfrost:units = "1.0" ;
+		groundfrost:description = "Days with ground frost" ;
+		groundfrost:label_units = "days" ;
+		groundfrost:plot_label = "Ground frost (days)" ;
+		groundfrost:cell_methods = "time: minimum within days time: sum over days time: mean over years time: sum" ;
+		groundfrost:coordinates = "area_type clim_season geo_region surface_temperature" ;
+	double time(time) ;
+		time:axis = "T" ;
+		time:bounds = "time_bnds" ;
+		time:units = "hours since 1800-01-01 00:00:00" ;
+		time:standard_name = "time" ;
+		time:calendar = "gregorian" ;
+	double time_bnds(time, bnds) ;
+	int region(region) ;
+		region:units = "1" ;
+		region:standard_name = "region" ;
+	char geo_region(region, string26) ;
+		geo_region:units = "1" ;
+		geo_region:long_name = "Administrative Region" ;
+	char area_type(string15) ;
+		area_type:units = "1" ;
+		area_type:standard_name = "area_type" ;
+	char clim_season(time, string64) ;
+		clim_season:units = "1" ;
+		clim_season:long_name = "clim_season" ;
+	double surface_temperature ;
+		surface_temperature:units = "degC" ;
+		surface_temperature:standard_name = "surface_temperature" ;
+
+// global attributes:
+		:comment = "seasonal resolution gridded climate observations" ;
+,		:creation_date = "2021-07-19T10:59:55" ;
+,		:frequency = "seas-30y" ;
+,		:institution = "Met Office" ;
+,		:lta_period = "1981-2010" ;
+,		:references = "doi: 10.1002/joc.1161" ;
+,		:short_name = "seasonal_groundfrost_climatology" ;
+,		:source = "HadUK-Grid_v1.0.3.0" ;
+,		:title = "Gridded surface climate observations data for the UK" ;
+,		:version = "v20210712" ;
+,		:Conventions = "CF-1.7" ;
+data:
+
+ groundfrost =
+  52.3411233896753, 49.7414421942475, 64.0443319621622, 47.4727181279343, 
+    57.9360346376575, 57.9397027504797, 52.0488085260937, 49.6971794252275, 
+    44.7984414119852, 52.4238430749395, 52.0837517551369, 53.82958487617, _, 
+    32.1479795873827, 49.1493220876455, 48.1079136351579,
+  31.9337596768219, 30.5967633594371, 41.6778617868119, 26.0448615666124, 
+    37.1595826220376, 37.6865799555039, 33.2300387492295, 31.0238851327505, 
+    27.9430162092451, 33.8248857954409, 35.1730776918432, 32.6128798993257, 
+    _, 19.5288689412234, 30.4746879880674, 31.8166333603918,
+  1.56020548541242, 1.36365614448939, 3.66129200484775, 0.545904525311319, 
+    2.69084774207227, 3.77426136665317, 2.20286455999193, 1.45890642766767, 
+    1.17393906883621, 1.85605490494487, 3.25947263984126, 1.56657965406754, 
+    _, 1.05126120239961, 1.68045354637833, 2.47453291226195,
+  19.4944539992712, 18.1562576566289, 28.3396480070593, 16.4948747930114, 
+    23.6749470414661, 23.7505397382762, 20.6526291801548, 19.7986409602333, 
+    16.5117150188319, 21.1155622977652, 22.6492861590755, 19.8573558102957, 
+    _, 10.1471106577495, 18.5712481006102, 18.6622951754675 ;
+,
+ time = 1586976, 1589136, 1591320, 1593528 ;
+,
+ time_bnds =
+  1586616, 1842216,
+  1588032, 1844424,
+  1590240, 1846632,
+  1592448, 1848816 ;
+,
+ region = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ;
+,
+ geo_region =
+  "East Midlands             ",
+  "East of England           ",
+  "East Scotland             ",
+  "London                    ",
+  "North East England        ",
+  "North Scotland            ",
+  "North West England        ",
+  "South East England        ",
+  "South West England        ",
+  "West Midlands             ",
+  "West Scotland             ",
+  "Yorkshire and Humber      ",
+  "Channel Islands           ",
+  "Isle of Man               ",
+  "Northern Ireland          ",
+  "Wales                     " ;
+,
+ area_type = "natural_grasses" ;
+,
+ clim_season =
+  "djf                                                             ",
+  "mam                                                             ",
+  "jja                                                             ",
+  "son                                                             " ;
+,
+ surface_temperature = 0 ;
+}

@@ -1,0 +1,100 @@
+netcdf pv_hadukgrid_uk_region_seas-30y_198101-201012 {
+dimensions:
+	time = 4 ;
+	region = 16 ;
+	bnds = 2 ;
+	string26 = 26 ;
+	string64 = 64 ;
+,variables:
+	double pv(time, region) ;
+		pv:standard_name = "water_vapor_partial_pressure_in_air" ;
+		pv:long_name = "partial pressure of water vapour" ;
+		pv:units = "hPa" ;
+		pv:description = "Vapour pressure" ;
+		pv:label_units = "hPa" ;
+		pv:plot_label = "Vapour pressure (hPa)" ;
+		pv:cell_methods = "time: mean within days time: mean over days time: mean over years time: mean" ;
+		pv:coordinates = "clim_season geo_region" ;
+	double time(time) ;
+		time:axis = "T" ;
+		time:bounds = "time_bnds" ;
+		time:units = "hours since 1800-01-01 00:00:00" ;
+		time:standard_name = "time" ;
+		time:calendar = "gregorian" ;
+	double time_bnds(time, bnds) ;
+	int region(region) ;
+		region:units = "1" ;
+		region:standard_name = "region" ;
+	char geo_region(region, string26) ;
+		geo_region:units = "1" ;
+		geo_region:long_name = "Administrative Region" ;
+	char clim_season(time, string64) ;
+		clim_season:units = "1" ;
+		clim_season:long_name = "clim_season" ;
+
+// global attributes:
+		:comment = "seasonal resolution gridded climate observations" ;
+,		:creation_date = "2021-07-19T10:59:44" ;
+,		:frequency = "seas-30y" ;
+,		:institution = "Met Office" ;
+,		:lta_period = "1981-2010" ;
+,		:references = "doi: 10.1002/joc.1161" ;
+,		:short_name = "seasonal_vapourpressure_climatology" ;
+,		:source = "HadUK-Grid_v1.0.3.0" ;
+,		:title = "Gridded surface climate observations data for the UK" ;
+,		:version = "v20210712" ;
+,		:Conventions = "CF-1.7" ;
+data:
+
+ pv =
+  7.25411048915205, 7.35511679227705, 6.4747123928295, 7.51703796119867, 
+    6.80498691423186, 6.54333509101745, 7.07980416899704, 7.57506361384655, 
+    7.88705684845847, 7.29981185932619, 7.05835216828018, 6.99306447138469, 
+    _, 7.51879348907255, 7.56516696340384, 7.42332211710213,
+  8.72556540853696, 8.87760197010083, 7.6576677584215, 8.88244658250779, 
+    8.10748345515758, 7.58088056193663, 8.38009898244493, 9.00916971624092, 
+    9.14981651194577, 8.72969610159941, 8.18088323109784, 8.3685998982758, _, 
+    8.60956014467347, 8.71845296177612, 8.72256960002365,
+  13.3784047188774, 13.7808612731238, 11.8351185422735, 13.7361255420782, 
+    12.5017050917722, 11.5005705350954, 12.9701720787634, 13.9327679024872, 
+    13.8792697158104, 13.2735896297811, 12.4398744297358, 12.9281211091044, 
+    _, 12.8368418945549, 13.0127227401384, 13.308177584473,
+  10.6367977134923, 10.9395442176436, 9.25652043656336, 11.0556374060114, 
+    9.84348372014982, 9.1481457447227, 10.2283323804764, 11.1385000945505, 
+    11.2460156252088, 10.5648730678332, 9.9222091915731, 10.2378514776508, _, 
+    10.509613615347, 10.5293317944615, 10.6361085791976 ;
+,
+ time = 1586976, 1589136, 1591320, 1593528 ;
+,
+ time_bnds =
+  1586616, 1842216,
+  1588032, 1844424,
+  1590240, 1846632,
+  1592448, 1848816 ;
+,
+ region = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ;
+,
+ geo_region =
+  "East Midlands             ",
+  "East of England           ",
+  "East Scotland             ",
+  "London                    ",
+  "North East England        ",
+  "North Scotland            ",
+  "North West England        ",
+  "South East England        ",
+  "South West England        ",
+  "West Midlands             ",
+  "West Scotland             ",
+  "Yorkshire and Humber      ",
+  "Channel Islands           ",
+  "Isle of Man               ",
+  "Northern Ireland          ",
+  "Wales                     " ;
+,
+ clim_season =
+  "djf                                                             ",
+  "mam                                                             ",
+  "jja                                                             ",
+  "son                                                             " ;
+}

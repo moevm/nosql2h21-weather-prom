@@ -1,0 +1,76 @@
+netcdf sfcWind_hadukgrid_uk_region_ann-20y_198101-200012 {
+dimensions:
+	time = 1 ;
+	region = 16 ;
+	bnds = 2 ;
+	string26 = 26 ;
+,variables:
+	double sfcWind(time, region) ;
+		sfcWind:standard_name = "wind_speed" ;
+		sfcWind:long_name = "Wind speed at 10m" ;
+		sfcWind:units = "m s-1" ;
+		sfcWind:description = "Wind speed" ;
+		sfcWind:label_units = "m s-1" ;
+		sfcWind:level = "10m" ;
+		sfcWind:plot_label = "Wind speed at 10m (m s-1)" ;
+		sfcWind:cell_methods = "time: mean within days time: mean over days time: mean over years time: mean" ;
+		sfcWind:coordinates = "geo_region" ;
+	double time(time) ;
+		time:axis = "T" ;
+		time:bounds = "time_bnds" ;
+		time:units = "hours since 1800-01-01 00:00:00" ;
+		time:standard_name = "time" ;
+		time:calendar = "gregorian" ;
+	double time_bnds(time, bnds) ;
+	int region(region) ;
+		region:units = "1" ;
+		region:standard_name = "region" ;
+	char geo_region(region, string26) ;
+		geo_region:units = "1" ;
+		geo_region:long_name = "Administrative Region" ;
+
+// global attributes:
+		:comment = "annual resolution gridded climate observations" ;
+,		:creation_date = "2021-07-19T10:59:38" ;
+,		:frequency = "ann-20y" ;
+,		:institution = "Met Office" ;
+,		:lta_period = "1981-2000" ;
+,		:references = "doi: 10.1002/joc.1161" ;
+,		:short_name = "annual_windspeed_climatology" ;
+,		:source = "HadUK-Grid_v1.0.3.0" ;
+,		:title = "Gridded surface climate observations data for the UK" ;
+,		:version = "v20210712" ;
+,		:Conventions = "CF-1.7" ;
+data:
+
+ sfcWind =
+  4.39199426626877, 4.31137845453062, 5.37449932794906, 3.53036893610117, 
+    4.75682820233156, 5.95288421498153, 4.78276527703448, 3.9900622475373, 
+    4.67925936689807, 3.8670396492244, 5.73088921397196, 4.73110348334393, _, 
+    7.80147631761948, 4.65397548888245, 5.17090697419574 ;
+,
+ time = 1590960 ;
+,
+ time_bnds =
+  1586616, 1761912 ;
+,
+ region = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ;
+,
+ geo_region =
+  "East Midlands             ",
+  "East of England           ",
+  "East Scotland             ",
+  "London                    ",
+  "North East England        ",
+  "North Scotland            ",
+  "North West England        ",
+  "South East England        ",
+  "South West England        ",
+  "West Midlands             ",
+  "West Scotland             ",
+  "Yorkshire and Humber      ",
+  "Channel Islands           ",
+  "Isle of Man               ",
+  "Northern Ireland          ",
+  "Wales                     " ;
+}

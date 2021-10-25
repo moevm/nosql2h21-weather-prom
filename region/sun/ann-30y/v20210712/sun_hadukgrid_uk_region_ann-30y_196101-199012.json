@@ -1,0 +1,75 @@
+netcdf sun_hadukgrid_uk_region_ann-30y_196101-199012 {
+dimensions:
+	time = 1 ;
+	region = 16 ;
+	bnds = 2 ;
+	string26 = 26 ;
+,variables:
+	double sun(time, region) ;
+		sun:standard_name = "duration_of_sunshine" ;
+		sun:long_name = "Sunshine hours" ;
+		sun:units = "hour" ;
+		sun:description = "Sunshine hours" ;
+		sun:label_units = "h" ;
+		sun:plot_label = "Sunshine hours (h)" ;
+		sun:cell_methods = "time: sum within days time: sum over days time: mean over years time: sum" ;
+		sun:coordinates = "geo_region" ;
+	double time(time) ;
+		time:axis = "T" ;
+		time:bounds = "time_bnds" ;
+		time:units = "hours since 1800-01-01 00:00:00" ;
+		time:standard_name = "time" ;
+		time:calendar = "gregorian" ;
+	double time_bnds(time, bnds) ;
+	int region(region) ;
+		region:units = "1" ;
+		region:standard_name = "region" ;
+	char geo_region(region, string26) ;
+		geo_region:units = "1" ;
+		geo_region:long_name = "Administrative Region" ;
+
+// global attributes:
+		:comment = "annual resolution gridded climate observations" ;
+,		:creation_date = "2021-07-19T10:59:33" ;
+,		:frequency = "ann-30y" ;
+,		:institution = "Met Office" ;
+,		:lta_period = "1961-1990" ;
+,		:references = "doi: 10.1002/joc.1161" ;
+,		:short_name = "annual_sunshine_climatology" ;
+,		:source = "HadUK-Grid_v1.0.3.0" ;
+,		:title = "Gridded surface climate observations data for the UK" ;
+,		:version = "v20210712" ;
+,		:Conventions = "CF-1.7" ;
+data:
+
+ sun =
+  1394.05817291569, 1496.09312897189, 1228.32182939656, 1478.42948456996, 
+    1296.78288351043, 1067.53223635611, 1308.57426452286, 1556.52749427769, 
+    1519.97339194353, 1377.6420628121, 1254.73702491191, 1317.38624108462, _, 
+    1485.64900659899, 1240.79042485656, 1354.45882725076 ;
+,
+ time = 1415640 ;
+,
+ time_bnds =
+  1411296, 1674240 ;
+,
+ region = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ;
+,
+ geo_region =
+  "East Midlands             ",
+  "East of England           ",
+  "East Scotland             ",
+  "London                    ",
+  "North East England        ",
+  "North Scotland            ",
+  "North West England        ",
+  "South East England        ",
+  "South West England        ",
+  "West Midlands             ",
+  "West Scotland             ",
+  "Yorkshire and Humber      ",
+  "Channel Islands           ",
+  "Isle of Man               ",
+  "Northern Ireland          ",
+  "Wales                     " ;
+}

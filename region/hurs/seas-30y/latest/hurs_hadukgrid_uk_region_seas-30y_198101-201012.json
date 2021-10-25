@@ -1,0 +1,101 @@
+netcdf hurs_hadukgrid_uk_region_seas-30y_198101-201012 {
+dimensions:
+	time = 4 ;
+	region = 16 ;
+	bnds = 2 ;
+	string26 = 26 ;
+	string64 = 64 ;
+,variables:
+	double hurs(time, region) ;
+		hurs:standard_name = "relative_humidity" ;
+		hurs:long_name = "Relative humidity" ;
+		hurs:units = "0.01" ;
+		hurs:description = "Relative humidity" ;
+		hurs:label_units = "%" ;
+		hurs:level = "1.5m" ;
+		hurs:plot_label = "Relative humidity at 1.5m (%)" ;
+		hurs:cell_methods = "time: mean within days time: mean over days time: mean over years time: mean" ;
+		hurs:coordinates = "clim_season geo_region" ;
+	double time(time) ;
+		time:axis = "T" ;
+		time:bounds = "time_bnds" ;
+		time:units = "hours since 1800-01-01 00:00:00" ;
+		time:standard_name = "time" ;
+		time:calendar = "gregorian" ;
+	double time_bnds(time, bnds) ;
+	int region(region) ;
+		region:units = "1" ;
+		region:standard_name = "region" ;
+	char geo_region(region, string26) ;
+		geo_region:units = "1" ;
+		geo_region:long_name = "Administrative Region" ;
+	char clim_season(time, string64) ;
+		clim_season:units = "1" ;
+		clim_season:long_name = "clim_season" ;
+
+// global attributes:
+		:comment = "seasonal resolution gridded climate observations" ;
+,		:creation_date = "2021-07-19T10:59:51" ;
+,		:frequency = "seas-30y" ;
+,		:institution = "Met Office" ;
+,		:lta_period = "1981-2010" ;
+,		:references = "doi: 10.1002/joc.1161" ;
+,		:short_name = "seasonal_relativehumidity_climatology" ;
+,		:source = "HadUK-Grid_v1.0.3.0" ;
+,		:title = "Gridded surface climate observations data for the UK" ;
+,		:version = "v20210712" ;
+,		:Conventions = "CF-1.7" ;
+data:
+
+ hurs =
+  86.4734770460139, 86.093225322744, 84.712878533575, 84.0498899242711, 
+    85.406701756059, 83.5602972639973, 85.4023878583861, 85.9639361342084, 
+    86.0468135207845, 85.5945154324912, 85.2132046042507, 85.5679147310346, 
+    _, 82.6934890423972, 86.4813740673828, 85.2277720438218,
+  78.6747609754728, 78.4230578208704, 78.8664909793278, 75.1466272627933, 
+    79.9997114054091, 78.5985413642836, 78.6438009167569, 78.4763388682888, 
+    79.86098921693, 78.2083127923464, 79.645029717605, 78.8727297629975, _, 
+    79.6067299961317, 80.5212138281675, 79.4840278357712,
+  77.1114163109299, 76.331373074077, 80.2995628752183, 72.4472013127746, 
+    80.4894962867157, 80.7777923588304, 79.2744914139335, 76.9801603370033, 
+    79.5009208559566, 77.1173931164742, 81.5721443867691, 78.2473972574368, 
+    _, 80.559707992919, 81.9079853421496, 80.3306468358095,
+  84.1616130172646, 83.5584297090161, 83.9056179569679, 81.7677814989379, 
+    84.8788160349852, 83.3308478451477, 83.9495791463436, 83.9654909713621, 
+    84.5300420638546, 83.8800065994071, 84.4397188354156, 83.9100996334512, 
+    _, 82.237256295255, 85.8437719238086, 84.1505161958555 ;
+,
+ time = 1586976, 1589136, 1591320, 1593528 ;
+,
+ time_bnds =
+  1586616, 1842216,
+  1588032, 1844424,
+  1590240, 1846632,
+  1592448, 1848816 ;
+,
+ region = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ;
+,
+ geo_region =
+  "East Midlands             ",
+  "East of England           ",
+  "East Scotland             ",
+  "London                    ",
+  "North East England        ",
+  "North Scotland            ",
+  "North West England        ",
+  "South East England        ",
+  "South West England        ",
+  "West Midlands             ",
+  "West Scotland             ",
+  "Yorkshire and Humber      ",
+  "Channel Islands           ",
+  "Isle of Man               ",
+  "Northern Ireland          ",
+  "Wales                     " ;
+,
+ clim_season =
+  "djf                                                             ",
+  "mam                                                             ",
+  "jja                                                             ",
+  "son                                                             " ;
+}
