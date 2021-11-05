@@ -7,7 +7,7 @@ case class AppConfig(httpEndpoint: HttpEndpoint)
 
 object AppConfig {
   def apply(confName: String): AppConfig = {
-    val c: Config = ConfigFactory.parseResources(confName)
+    val c: Config = ConfigFactory.parseResources(confName).withFallback(ConfigFactory.load())
     val httpConf = c.getConfig("http")
 
     new AppConfig(
