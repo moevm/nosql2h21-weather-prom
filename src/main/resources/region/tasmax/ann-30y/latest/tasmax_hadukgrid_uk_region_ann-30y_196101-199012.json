@@ -1,0 +1,63 @@
+{
+    "geo_region": [
+        "East Midlands             ",
+        "East of England           ",
+        "East Scotland             ",
+        "London                    ",
+        "North East England        ",
+        "North Scotland            ",
+        "North West England        ",
+        "South East England        ",
+        "South West England        ",
+        "West Midlands             ",
+        "West Scotland             ",
+        "Yorkshire and Humber      ",
+        "Channel Islands           ",
+        "Isle of Man               ",
+        "Northern Ireland          ",
+        "Wales                     "
+    ],
+    "region": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+    ],
+    "tasmax": [
+        12.8316284538865,
+        13.4571616697466,
+        10.2776666270441,
+        14.2079978310722,
+        11.1185720270902,
+        9.79800694984542,
+        11.7266474273168,
+        13.5748595606136,
+        13.2512873174377,
+        12.839139724924,
+        10.8594998193662,
+        11.9750100786477,
+        null,
+        11.4562909282264,
+        11.9132982479911,
+        11.9984747246036
+    ],
+    "time": [
+        1415640
+    ],
+    "time_bnds": [
+        1411296,
+        1674240
+    ]
+}
