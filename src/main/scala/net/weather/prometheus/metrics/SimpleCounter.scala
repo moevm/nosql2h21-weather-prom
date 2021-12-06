@@ -1,6 +1,6 @@
 package net.weather.prometheus.metrics
 
-import io.prometheus.client.{CollectorRegistry, Counter}
+import io.prometheus.client.Counter
 
 object SimpleCounter {
 
