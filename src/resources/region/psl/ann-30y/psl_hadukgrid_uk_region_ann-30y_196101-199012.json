@@ -1,0 +1,63 @@
+{
+    "geo_region": [
+        "East Midlands             ",
+        "East of England           ",
+        "East Scotland             ",
+        "London                    ",
+        "North East England        ",
+        "North Scotland            ",
+        "North West England        ",
+        "South East England        ",
+        "South West England        ",
+        "West Midlands             ",
+        "West Scotland             ",
+        "Yorkshire and Humber      ",
+        "Channel Islands           ",
+        "Isle of Man               ",
+        "Northern Ireland          ",
+        "Wales                     "
+    ],
+    "psl": [
+        1014.6251014912,
+        1015.02649725158,
+        1012.07042577513,
+        1015.46711577033,
+        1013.18701398792,
+        1010.98210975908,
+        1013.76858908312,
+        1015.57207859995,
+        1015.59443102735,
+        1014.87209760552,
+        1012.47410568544,
+        1013.95718427157,
+        null,
+        1013.37487675503,
+        1012.82250828535,
+        1014.8494553129
+    ],
+    "region": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+    ],
+    "time": [
+        1415640
+    ],
+    "time_bnds": [
+        1411296,
+        1674240
+    ]
+}
