@@ -1,0 +1,63 @@
+{
+    "geo_region": [
+        "East Midlands             ",
+        "East of England           ",
+        "East Scotland             ",
+        "London                    ",
+        "North East England        ",
+        "North Scotland            ",
+        "North West England        ",
+        "South East England        ",
+        "South West England        ",
+        "West Midlands             ",
+        "West Scotland             ",
+        "Yorkshire and Humber      ",
+        "Channel Islands           ",
+        "Isle of Man               ",
+        "Northern Ireland          ",
+        "Wales                     "
+    ],
+    "rainfall": [
+        675.667467141246,
+        599.435243315148,
+        1134.30035684327,
+        633.76689291155,
+        843.160919547081,
+        1631.20798807637,
+        1211.31968324065,
+        746.347071477762,
+        996.105338446529,
+        736.869795885109,
+        1609.84940117039,
+        833.730595736064,
+        null,
+        1284.29810193254,
+        1100.55657898674,
+        1401.47430811955
+    ],
+    "region": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+    ],
+    "time": [
+        1415640
+    ],
+    "time_bnds": [
+        1411296,
+        1674240
+    ]
+}

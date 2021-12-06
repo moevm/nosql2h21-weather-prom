@@ -1,0 +1,66 @@
+{
+    "geo_region": [
+        "East Midlands             ",
+        "East of England           ",
+        "East Scotland             ",
+        "London                    ",
+        "North East England        ",
+        "North Scotland            ",
+        "North West England        ",
+        "South East England        ",
+        "South West England        ",
+        "West Midlands             ",
+        "West Scotland             ",
+        "Yorkshire and Humber      ",
+        "Channel Islands           ",
+        "Isle of Man               ",
+        "Northern Ireland          ",
+        "Wales                     "
+    ],
+    "region": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+    ],
+    "snowLying": [
+        10.4797162733423,
+        8.07451602873586,
+        29.3988821794014,
+        6.12245616491135,
+        21.5567633434839,
+        30.3308801600128,
+        13.6274168948002,
+        6.77080237005508,
+        5.79871117459884,
+        9.84053072757385,
+        16.1535288406954,
+        15.0670490162351,
+        null,
+        8.12312967026961,
+        9.55405265172076,
+        12.0887697083887
+    ],
+    "surface_snow_area_fraction": [
+        0.5
+    ],
+    "time": [
+        1590960
+    ],
+    "time_bnds": [
+        1586616,
+        1849560
+    ]
+}
