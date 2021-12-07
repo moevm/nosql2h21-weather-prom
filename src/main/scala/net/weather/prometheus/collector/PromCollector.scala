@@ -1,8 +1,6 @@
 package net.weather.prometheus.collector
 
-import io.prometheus.client.{CollectorRegistry, Gauge}
-import io.prometheus.client.exporter.PushGateway
-import net.weather.prometheus.conf.HttpEndpoint
+import io.prometheus.client.Gauge
 import net.weather.prometheus.logging.Logging
 import net.weather.prometheus.util.TimeUnits
 import play.api.libs.json.{JsArray, JsValue, Json}
@@ -14,54 +12,44 @@ import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorServic
 import scala.util.Try
 
 
-final case class PromCollector(pushgatewayEndpoint: HttpEndpoint) extends Logging{
+final class PromCollector extends Logging {
 
   def collect(): Future[Unit] = {
-    val dirs = getDirectories("/home/iurii/nosql2h21-weather-prom/src/main/resources/region")
-
-    val future = dirs.flatMap { dir =>
+    val dirs = getDirectories("/data")
+    val future = dirs.flatMap { dir => getDirectories(dir.getAbsolutePath).map {
       val metric = Gauge
         .build()
         .name(dir.getName)
         .help(dir.getName)
         .labelNames("region", "time_unit")
-        .register(registry)
+        .register()
 
-      getDirectories(dir.getAbsolutePath)
-        .map { timeUnitDir =>
-          Try {
-            val timeUnit = TimeUnits.withName(timeUnitDir.getName)
-            val json = getJson(timeUnitDir.getAbsolutePath)
-            val data = transformJsArray((json \ dir.getName).as[JsArray])
-            val regions = Iterator.continually((json \ "geo_region").as[Seq[String]].map(_.trim)).flatten
-            Future {
-              timeUnit match {
-                case _ =>
-                  data.foreach { value =>
-                    metric
-                      .labels(regions.next, timeUnit.toString)
-                      .set(value.getOrElse(0.0))
-                    Thread.sleep(1.second.toMillis)
-                  }
-              }
+      timeUnitDir => Try {
+        val timeUnit = TimeUnits.withName(timeUnitDir.getName)
+        val json = getJson(timeUnitDir.getAbsolutePath)
+        val data = transformJsArray((json \ dir.getName).as[JsArray])
+        val regions = Iterator.continually((json \ "geo_region").as[Seq[String]].map(_.trim)).flatten
+        Future {
+          timeUnit match {
+            case _ => data.foreach { value =>
+              metric
+                .labels(regions.next, timeUnit.toString)
+                .set(value.getOrElse(0.0))
+              Thread.sleep(1000)
             }
-          }.getOrElse {
-            log.info(s"Skip dir: ${timeUnitDir.getName}")
-            Future.unit
           }
         }
-    }
+      }.getOrElse {
+        log.info(s"Skip dir: ${timeUnitDir.getName}")
+        Future.unit
+      }
+    }}
 
     Try(Await.result(Future.sequence(future), 1.minutes)) match {
       case _ =>
-        pg.pushAdd(registry, "weather")
         Future.unit
     }
   }
-
-  private val pg = new PushGateway(pushgatewayEndpoint.toString)
-
-  private val registry = new CollectorRegistry
 
   implicit private val ec: ExecutionContextExecutorService =
     ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(40))

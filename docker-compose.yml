@@ -9,16 +9,6 @@ services:
     ports:
       - "9090:9090"
     restart: on-failure
-  pushgateway:
-    image: prom/pushgateway
-    depends_on:
-      - prometheus
-    networks:
-      back:
-        ipv4_address: 172.18.0.11
-    ports:
-      - "9091:9091"
-    restart: on-failure
   application:
     build: .
     image: application
@@ -26,7 +16,7 @@ services:
       - prometheus
     networks:
       back:
-        ipv4_address: 172.18.0.12
+        ipv4_address: 172.18.0.11
     ports:
       - "8080:8080"
     restart: on-failure
