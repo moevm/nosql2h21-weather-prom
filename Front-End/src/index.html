@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="/node_modules/jquery-ui/themes/base/all.css" rel="stylesheet" />
+        <link href="/node_modules/devextreme/dist/css/dx.common.css" rel="stylesheet" />
+        <link href="/node_modules/devextreme/dist/css/dx.light.css" rel="stylesheet" />
+
+        <script type="text/javascript" src="/node_modules/knockout/build/output/knockout-latest.js"></script>
+        <script type="text/javascript" src="/node_modules/devextreme/dist/js/dx.all.js"></script>
+        <script type="text/javascript" src="/node_modules/export-from-json/dist/es2015/index.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div class="dx-viewport demo-container">
+        <div class="page-wrapper">
+            <h1>Weather Archive</h1>
+            <div class="toolbar" data-bind="dxToolbar: $data.toolbar"></div>
+            <!-- ko with: $data.currentPage -->
+            <!-- ko template: { name: $data.templateName, data: $data } -->
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko template: { name: 'settings-popup', data: $data.settingsPopup }-->
+            <!-- /ko -->
+        </div>
+    </div>
+    <input id="importJSON" name="importJSON" accept=".json" type="file">
+    </body>
+</html>
