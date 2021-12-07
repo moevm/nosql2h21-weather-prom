@@ -15,4 +15,3 @@ src/app/sources/utils/apiKey.ts
 .idea
 .eslintcache
 # misc
-src/app/sources/templates.ts
