@@ -1,0 +1,9 @@
+<script type="text/html" id="settings-popup">
+    <div data-bind="dxPopup: $data">
+        <div class="settings-categories">
+            <!-- ko foreach: $data.categories -->
+            <div id="settings-checkbox" data-bind="dxCheckBox: $data"></div>
+            <!-- /ko -->
+        </div>
+    </div>
+</script>

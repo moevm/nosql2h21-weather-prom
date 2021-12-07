@@ -17,6 +17,17 @@ body {
                     border-radius: 5px;
                 }
             }
+
+
+
+            .dailyMounthy {
+                display: flex;
+                .date-box {
+                    display: inline-block;
+                    margin-left: 10px;
+                }
+
+            }
     
             .google-map {
                 left: 20%;
@@ -60,5 +71,18 @@ body {
                 margin-top: 0;
             }
         }
+    }
+
+    .settings-categories {
+        display: grid;
+
+        .dx-checkbox {
+            margin-top: 13px;
+            margin-left: 13px;
+        }
+    }
+
+    #importJSON {
+        display: none;
     }
 }
