@@ -1,33 +1,96 @@
 import * as ko from 'knockout';
+import * as $ from 'jquery';
 import { Loader as MapLoader } from '@googlemaps/js-api-loader';
-import { IPageComponent } from './components/pageComponent';
-import { MapPageModel } from './components/map/mapModel';
 import { PageToolbar } from './components/toolbar';
-import { citiesInfo } from './utils/_initData';
+import { DatePicker } from './components/datePicker';
+import { settingEntities, SettingsPopup } from './components/settings';
+import { Chart } from './components/chart';
+
+export const settingDisplayMapper = {
+    'Rainfall': 'rainfall',
+    'Sun': 'sun',
+    'Groundfrost': 'groundfrost',
+    'Hurs': 'hurs',
+    'Sea level preassure': 'psl',
+    'Vape preassure': 'pv',
+    'Snow lying': 'snow_lying',
+    'Average day temperature': 'tas',
+    'Average wind speed': 'sfc_wind'
+};
 
 export class BindingContext {
     constructor() {
+        this.datePicker(new DatePicker(this));
         this.toolbar = new PageToolbar(this);
-        this.mapPage = new MapPageModel();
+        this.settingsPopup = new SettingsPopup(this);
         this.tablePage = {
             templateName: 'table-page',
-            data: citiesInfo
+            data: this.dataContext
         };
+        this.chart = new Chart();
+        this.chart.dataSource = this.dataContext;
+        [this.categories, this.region].forEach((x: any) => x.subscribe(value => this.updateInfo()));
+        this.categories(settingEntities);
         if(!this.currentPage()) {
-            this.currentPage(this.tablePage);
+            this.currentPage({
+                templateName: 'table-page',
+                data: this.dataContext
+            });
         }
     }
+    chart: any;
     tablePage: any;
+    dailyMonthlyButtonGroup: any;
     mapLoader: MapLoader;
     googleMap: google.maps.Map;
-    currentPage: ko.Observable<IPageComponent> = ko.observable();
-    mapPage: MapPageModel;
+    currentPage = ko.observable();
+    settingsPopup: SettingsPopup;
+    datePicker = ko.observable();
     toolbar: any;
-    swithToMap() {
-        this.currentPage(this.mapPage);
+    dataContext = ko.observable([]);
+    categories = ko.observable([]);
+    region = ko.observable('Wales');
+
+    swithPage(index: number) {
+        if(index === 0) {
+            this.currentPage({
+                templateName: 'table-page',
+                data: this.dataContext
+            });
+        } else {
+            this.currentPage({
+                templateName: 'chart-page',
+                data: this.chart
+            });
+        }
     }
-    swithToTable() {
-        this.currentPage(this.tablePage);
+    updateInfo() {
+        var end = new Date();
+        var start = new Date();
+        start.setHours(end.getHours() - 1);
+        this.dataContext([]);
+        this.categories().forEach(category => category && this.loadData(category, start, end));
+    }
+    loadData(category: string, start, end) {
+        $.get(`http://localhost:9090/api/v1/query_range?query=${settingDisplayMapper[category]}`
+            + `{time_unit="mon",region="${this.region()}"}&start=${start.toISOString()}&end=${end.toISOString()}&step=10s`).done(data => {
+            var metrix: Array<any> = data.data.result[0] && data.data.result[0].values;
+            var currentData = this.dataContext() || [];
+            if(metrix) {
+                for(var i = 0; i < metrix.length; i++) {
+                    if(!currentData[i]) {
+                        var newData = {
+                            'time': new Date(Date.UTC(70, 0, 1, null, null, metrix[i][0])).toLocaleTimeString()
+                        };
+                        newData[category] = metrix[i][1];
+                        currentData.push(newData);
+                    } else {
+                        currentData[i][category] = metrix[i][1];
+                    }
+                }
+                this.dataContext(currentData);
+            }
+        });
     }
 }
 
