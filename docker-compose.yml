@@ -10,7 +10,7 @@ services:
       - "9090:9090"
     restart: on-failure
   application:
-    build: .
+    build: Back-End
     image: application
     depends_on:
       - prometheus
@@ -20,6 +20,16 @@ services:
     ports:
       - "8080:8080"
     restart: on-failure
+  front:
+    build: Front-End
+    image: frontend
+    networks:
+      back:
+        ipv4_address: 172.18.0.12
+    ports:
+      - "8000:8000"
+    restart: on-failure
+
 
 networks:
   back:
