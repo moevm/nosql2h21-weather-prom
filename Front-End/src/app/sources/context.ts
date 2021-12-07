@@ -1,6 +1,5 @@
 import * as ko from 'knockout';
 import * as $ from 'jquery';
-import { Loader as MapLoader } from '@googlemaps/js-api-loader';
 import { PageToolbar } from './components/toolbar';
 import { DatePicker } from './components/datePicker';
 import { settingEntities, SettingsPopup } from './components/settings';
@@ -41,8 +40,6 @@ export class BindingContext {
     chart: any;
     tablePage: any;
     dailyMonthlyButtonGroup: any;
-    mapLoader: MapLoader;
-    googleMap: google.maps.Map;
     currentPage = ko.observable();
     settingsPopup: SettingsPopup;
     datePicker = ko.observable();
