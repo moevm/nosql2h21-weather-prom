@@ -23,6 +23,12 @@ class TemplateSource implements ko.TemplateSource {
         }
 }
 
+export function getTemplate(id: string) {
+    var id = id[0] === '#' ? id.substr(1) : id;
+    var item = document.querySelector('#'+id);
+    return item && item.innerHTML || TemplatesEngine.templates[id];
+}
+
 export class TemplatesEngine {
         private static _instance: TemplatesEngine;
         private _data: { [key: string]: any };

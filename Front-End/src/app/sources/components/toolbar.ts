@@ -1,39 +1,61 @@
 import * as ko from 'knockout';
-import notify from 'devextreme/ui/notify';
+import exportFromJSON from 'export-from-json';
 
 export class PageToolbar {
     height = ko.observable(40);
-    constructor(context) {
+    constructor(public context) {
+        document.getElementById('importJSON').addEventListener('change', this.uploadFile, false);
         this.items = [
             {
                 location: 'before',
-                widget: 'dxButton',
+                widget: 'dxButtonGroup',
                 locateInMenu: 'auto',
                 options: {
-                    text: 'Map View',
-                    onClick: function() {
-                        context.swithToMap();
-                    }
-                }
-            }, {
-                location: 'before',
-                widget: 'dxButton',
-                locateInMenu: 'auto',
-                options: {
-                    text: 'Chart View',
-                    onClick: function() {
-
+                    items: [
+                        { text: 'Table View' },
+                        { text: 'Chart View' }
+                    ],
+                    stylingMode: 'outlined',
+                    selectedItemKeys: ['Table View'],
+                    onItemClick(e) {
+                        context.swithPage(e.itemIndex);
                     }
                 }
             },
+            /**
             {
-                location: 'before',
+                template: getTemplate('date-picker'),
+                data: context.datePicker,
+                location: 'center',
+                locateInMenu: 'auto',
+            },*/
+            {
+                template: 'Region',
+                location: 'center',
+                locateInMenu: 'auto',
+            },
+            {
+                widget: 'dxSelectBox',
+                options: {
+                    dataSource: ['East Midlands', 'East of England',
+                        'Isle of Man', 'London', 'North East England', 'North Scotland', 'North West England',
+                        'Northern Ireland', 'Wales'],
+                    value: 'Wales',
+                    onValueChanged: function (e) {
+                        context.region(e.value);
+                    }
+                },
+                location: 'center',
+                locateInMenu: 'auto',
+            },
+            {
+                location: 'after',
                 widget: 'dxButton',
                 locateInMenu: 'auto',
                 options: {
-                    text: 'Table View',
-                    onClick: function() {
-                        context.swithToTable();
+                    icon: 'preferences',
+                    onClick: function () {
+                        context.settingsPopup.visible(true);
                     }
                 }
             },
@@ -43,8 +65,8 @@ export class PageToolbar {
                 locateInMenu: 'auto',
                 options: {
                     icon: 'export',
-                    onClick: function() {
-                        notify('Export button has been clicked!');
+                    onClick: function () {
+                        window['$']('#importJSON').trigger('click');
                     }
                 }
             }, {
@@ -53,12 +75,27 @@ export class PageToolbar {
                 locateInMenu: 'auto',
                 options: {
                     icon: 'download',
-                    onClick: function() {
-                        notify('Import button has been clicked!');
+                    onClick: function () {
+                        var data = <any> context.dataContext();
+                        const fileName = 'download';
+                        const exportType = exportFromJSON.types.json;
+                        exportFromJSON({ data, fileName, exportType });
                     }
                 }
             }
         ];
+    }
+    uploadFile = (event) => {
+        var file = event.target.files[0];
+        if(file) {
+            var reader = new FileReader();
+            var toolbar: any = this;
+            reader.onload = function (e) {
+                var contents = e.target.result;
+                toolbar.context.dataContext(JSON.parse(<any>contents));
+            };
+            reader.readAsText(file);
+        }
     }
     items: any[];
 }
