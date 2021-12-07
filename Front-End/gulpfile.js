@@ -32,7 +32,6 @@ gulp.task('Ωwatch:html', () => gulp.watch(['./src/app/html/**/*.html'],
                 gulp.series('Ωbuild:html')));
 
 gulp.task('start:frontend', gulp.series(
-    'Ωget:api:key',
     () => {
         gulp.watch(['./src/app/html/**/*.html', './src/index.html'],
                 gulp.series('Ωbuild:html'));
