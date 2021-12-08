@@ -1,8 +1,6 @@
 # nosql2h21-weather-prom
 
-## backend
-Для запуска бэка необходимо ввести команду:
-
-``
-sudo docker-compose up -d
-``
+Порты, на которых разворачивается:
+1. **backend**: ``8080``
+2. **frontend**: ``8000``
+3. **prometheus**: ``9090``
