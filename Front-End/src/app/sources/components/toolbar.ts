@@ -1,6 +1,13 @@
 import * as ko from 'knockout';
 import exportFromJSON from 'export-from-json';
 
+var timeLineMapper = {
+    'Season': 'seas',
+    'Month': 'mon',
+    'Year': 'ann',
+    'Day': 'day'
+};
+
 export class PageToolbar {
     height = ko.observable(40);
     constructor(public context) {
@@ -43,6 +50,23 @@ export class PageToolbar {
                     value: 'Wales',
                     onValueChanged: function (e) {
                         context.region(e.value);
+                    }
+                },
+                location: 'center',
+                locateInMenu: 'auto',
+            },
+            {
+                template: 'Time Line',
+                location: 'center',
+                locateInMenu: 'auto',
+            },
+            {
+                widget: 'dxSelectBox',
+                options: {
+                    dataSource: ['Day', 'Season', 'Month', 'Year'],
+                    value: 'Month',
+                    onValueChanged: function (e) {
+                        context.timeLine(timeLineMapper[e.value]);
                     }
                 },
                 location: 'center',

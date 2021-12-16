@@ -28,7 +28,7 @@ export class BindingContext {
         };
         this.chart = new Chart();
         this.chart.dataSource = this.dataContext;
-        [this.categories, this.region].forEach((x: any) => x.subscribe(value => this.updateInfo()));
+        [this.categories, this.region, this.timeLine].forEach((x: any) => x.subscribe(value => this.updateInfo()));
         this.categories(settingEntities);
         if(!this.currentPage()) {
             this.currentPage({
@@ -47,6 +47,7 @@ export class BindingContext {
     dataContext = ko.observable([]);
     categories = ko.observable([]);
     region = ko.observable('Wales');
+    timeLine = ko.observable('mon');
 
     swithPage(index: number) {
         if(index === 0) {
@@ -70,7 +71,7 @@ export class BindingContext {
     }
     loadData(category: string, start, end) {
         $.get(`http://localhost:9090/api/v1/query_range?query=${settingDisplayMapper[category]}`
-            + `{time_unit="mon",region="${this.region()}"}&start=${start.toISOString()}&end=${end.toISOString()}&step=10s`).done(data => {
+            + `{time_unit="${this.timeLine()}",region="${this.region()}"}&start=${start.toISOString()}&end=${end.toISOString()}&step=10s`).done(data => {
             var metrix: Array<any> = data.data.result[0] && data.data.result[0].values;
             var currentData = this.dataContext() || [];
             if(metrix) {
