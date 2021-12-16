@@ -7,14 +7,13 @@ import play.api.libs.json.{JsArray, JsValue, Json}
 
 import java.io.{File, FileInputStream, IOException}
 import java.util.concurrent.Executors
-import scala.concurrent.duration.DurationInt
-import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future}
+import scala.concurrent.{ExecutionContext, ExecutionContextExecutorService, Future}
 import scala.util.Try
 
 
 final class PromCollector extends Logging {
 
-  def collect(): Future[Unit] = {
+  def collect(): Future[List[Unit]] = {
     val dirs = getDirectories("/data")
     val future = dirs.flatMap { dir => getDirectories(dir.getAbsolutePath).map {
       val metric = Gauge
@@ -44,11 +43,7 @@ final class PromCollector extends Logging {
         Future.unit
       }
     }}
-
-    Try(Await.result(Future.sequence(future), 1.minutes)) match {
-      case _ =>
-        Future.unit
-    }
+    Future.sequence(future)
   }
 
   implicit private val ec: ExecutionContextExecutorService =

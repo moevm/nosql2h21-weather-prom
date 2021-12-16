@@ -1,38 +1,31 @@
-version: "3.3"
+version: "3"
 services:
   prometheus:
     build: prometheus
     image: prometheus
-    networks:
-      back:
-        ipv4_address: 172.18.0.10
     ports:
       - "9090:9090"
     restart: on-failure
+    networks:
+      - weather_network
   application:
     build: Back-End
     image: application
     depends_on:
       - prometheus
-    networks:
-      back:
-        ipv4_address: 172.18.0.11
     ports:
       - "8080:8080"
     restart: on-failure
+    networks:
+      - weather_network
   front:
     build: Front-End
     image: frontend
-    networks:
-      back:
-        ipv4_address: 172.18.0.12
     ports:
       - "8000:8000"
     restart: on-failure
-
+    networks:
+      - weather_network
 
 networks:
-  back:
-    ipam:
-      config:
-        - subnet: 172.18.0.0/24
+  weather_network:
