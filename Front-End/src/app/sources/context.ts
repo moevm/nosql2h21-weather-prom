@@ -22,23 +22,20 @@ export class BindingContext {
         this.datePicker(new DatePicker(this));
         this.toolbar = new PageToolbar(this);
         this.settingsPopup = new SettingsPopup(this);
-        this.tablePage = {
-            templateName: 'table-page',
-            data: this.dataContext
-        };
         this.chart = new Chart();
+        this.grid = this.createDataGrid();
         this.chart.dataSource = this.dataContext;
         [this.categories, this.region, this.timeLine].forEach((x: any) => x.subscribe(value => this.updateInfo()));
         this.categories(settingEntities);
         if(!this.currentPage()) {
             this.currentPage({
                 templateName: 'table-page',
-                data: this.dataContext
+                data: this.grid
             });
         }
     }
+    grid: any;
     chart: any;
-    tablePage: any;
     dailyMonthlyButtonGroup: any;
     currentPage = ko.observable();
     settingsPopup: SettingsPopup;
@@ -49,11 +46,47 @@ export class BindingContext {
     region = ko.observable('Wales');
     timeLine = ko.observable('mon');
 
+    createDataGrid() {
+        var grid = {
+            templateName: 'table-page',
+            dataSource: this.dataContext,
+            headerFilter: { visible: true },
+            sorting: {
+                mode: 'multiple',
+            },
+            columns: ko.computed({
+                read: () => {
+                    var columns = [];
+                    this.categories().forEach(category => {
+                        if(this.dataContext().every(x => !x[category])) {
+                            return;
+                        }
+                        category && columns.push({
+                            dataField: category,
+                            caption: category,
+                            headerFilter: {
+                                groupInterval: 10
+                            },
+                        });
+                    });
+                    columns.unshift({
+                        dataField: 'time',
+                        caption: 'Time',
+                        sortOrder: 'desc',
+                    });
+                    return columns;
+                }
+
+            })
+        };
+        return grid;
+    }
+
     swithPage(index: number) {
         if(index === 0) {
             this.currentPage({
                 templateName: 'table-page',
-                data: this.dataContext
+                data: this.grid
             });
         } else {
             this.currentPage({
@@ -80,10 +113,13 @@ export class BindingContext {
                         var newData = {
                             'time': new Date(Date.UTC(70, 0, 1, null, null, metrix[i][0])).toLocaleTimeString()
                         };
-                        newData[category] = metrix[i][1];
+                        newData[category] = Number.parseFloat(metrix[i][1]);
                         currentData.push(newData);
                     } else {
-                        currentData[i][category] = metrix[i][1];
+                        if(category == 'Rainfall') {
+                            console.log();
+                        }
+                        currentData[i][category] = Number.parseFloat(metrix[i][1]);
                     }
                 }
                 this.dataContext(currentData);
