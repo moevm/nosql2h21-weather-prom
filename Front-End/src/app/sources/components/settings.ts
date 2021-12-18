@@ -2,7 +2,7 @@ import notify from 'devextreme/ui/notify';
 import RadioGroup from 'devextreme/ui/radio_group';
 import * as ko from 'knockout';
 
-export const settingEntities = ['Rainfall', 'Sun', 'Groundfrost', 'Hurs', 'Sea level preassure', 'Vape preassure', 'Snow lying', 'Average day temperature', 'Average wind speed'];
+export const settingEntities = ['Rainfall', 'Sun', 'Groundfrost', 'Hurs', 'Sea level preassure', 'Vape preassure', 'Average day temperature'];
 
 export class SettingsPopup {
     constructor(public context) {
